@@ -1,0 +1,33 @@
+use db_university
+1- #Selezionare tutti gli studenti iscritti al Corso di Laurea in Economia
+select *
+from students s
+join degrees d on s.degree_id = d.id
+where d.name like 'Corso di Laurea in Economia';
+
+2- # Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di Neuroscienze
+select *
+from degrees deg 
+join departments dep on deg.department_id = dep.id 
+where deg.level like 'Magistrale' and dep.name like 'Dipartimento di Neuroscienze'
+
+
+3- # Selezionare tutti i corsi in cui insegna Fulvio Amato
+select* 
+from teachers tea 
+join course_teacher ct ON teacher_id = tea.id 
+where tea.name like 'Fulvio'
+and tea.surname like 'Amato';
+
+
+
+4- # Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il
+# relativo dipartimento, in ordine alfabetico per cognome e nome
+
+select *
+from degrees d 
+join students s on degree_id = d.id 
+join departments d2 on department_id = d2.id
+order by s.surname and s.name asc ;
+
+
